@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Student List</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background: #f4f6f9;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-present {
+            color: green;
+            font-weight: bold;
+        }
+
+        .status-absent {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <span class="navbar-brand">Registered Students</span>
+
+            <div class="ms-auto">
+                <a href="/add" class="btn btn-light btn-sm">+ Add New Student</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="container mt-4">
+        <h3 class="mb-4">Students' List</h3>
+
+        <div class="row g-4">
+            {% for each in students %}
+
+            <!-- CARD 1 -->
+            <div class="col-md-4">
+                <div class="card p-3">
+                    <h5 class="mb-3">{{ each.detail }}</h5>
+
+                    <p><strong>Name:</strong> {{ each.name }}</p>
+                    <p><strong>Gender:</strong> {{ each.gender }}</p>
+                    <p><strong>DOB:</strong> {{ each.dob}}</p>
+                    <p><strong>Stream:</strong> {{ each.stream }}</p>
+                    <p><strong>Student ID:</strong> {{ each.student_id }}</p>
+                    <p>
+                        <strong>Status:</strong>
+                        <span class="status-present">{{ each.is_present }}</span>
+                    </p>
+                    <p><strong>Date:</strong> {{ each.date }}</p>
+                    <div class="d-flex gap-2 mt-3">
+                        <button class="btn btn-primary btn-sm">Edit</button>
+                        <button class="btn btn-success btn-sm">View</button>
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </div>
+                    
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
